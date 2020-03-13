@@ -8,6 +8,7 @@ import {
 
 import style from './style';
 import runLogin from '../../Services/login';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const Login = () => {
   const [username,setUsername] = useState('');
@@ -17,7 +18,10 @@ const Login = () => {
   const tryLogin = async () => {
     try {
       const token = await runLogin(username,password);
-      console.warn("token:", token);
+      await AsyncStorage.setItem('instalura_token', token);
+      //const t = await AsyncStorage.getItem('instalura_token');
+      //console.warn("t:", t);
+
     } catch(err){
       setMessageErro(err.message);
     }

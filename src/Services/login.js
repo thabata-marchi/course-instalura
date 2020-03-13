@@ -8,9 +8,7 @@ const runLogin = async (username,password) => {
 
 
   if( response.status === 200) {
-    console.log( "Deu certo!!" );
-    return response.headers['x-access-token']
-    
+    return response.headers['x-access-token']    
   } else {
     throw new Error('Não foi possível logar!');
   }
